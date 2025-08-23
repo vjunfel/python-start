@@ -107,3 +107,18 @@ print("**************************************")
 print(User.palindrome_text("A man, a plan, a canal, Panama!"))
 print("**************************************")
 
+
+def even_numbers():
+    print("Type a number: ")
+    number = int(input())
+    even_count = 0
+
+    for i in range(number + 1):
+        if i % 2 == 0 and i > 0:
+            print(i)
+            even_count += 1
+
+    print(f"There are {even_count} total even numbers!")
+
+
+even_numbers()
