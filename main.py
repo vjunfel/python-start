@@ -101,24 +101,39 @@ class User:
 
         return origin == reverse
 
+    def palindrome_number():
+        print("Type a number:")
+        number = int(input())
+        reverse_number = int(str(number)[::-1])
+
+        print("Palindrome number: ")
+        return number == reverse_number
+
+    def even_numbers():
+        print("Type a number: ")
+        number = int(input())
+        even_count = 0
+
+        for i in range(number + 1):
+            if i % 2 == 0 and i > 0:
+                print(i)
+                even_count += 1
+
+        return (f"There are {even_count} even numbers!")
+
 
 print(User.fizz_buzz(32))
 print("**************************************")
 print(User.palindrome_text("A man, a plan, a canal, Panama!"))
 print("**************************************")
+print(User.palindrome_number())
+print("**************************************")
+print(User.even_numbers())
 
 
-def even_numbers():
-    print("Type a number: ")
-    number = int(input())
-    even_count = 0
-
-    for i in range(number + 1):
-        if i % 2 == 0 and i > 0:
-            print(i)
-            even_count += 1
-
-    print(f"There are {even_count} total even numbers!")
-
-
-even_numbers()
+# Formatting
+name = "John"
+age = 25
+print(f"my name is {name}, I'm {age}")
+print("my name is {}, I'm {}".format(name, age))
+print("my name is %s, I'm %s" % (name, age))
