@@ -1,3 +1,4 @@
+import re
 
 # def main():
 #     name = input("Enter your name: ")
@@ -34,9 +35,9 @@
 # print("Your band name is:", city + " " + pet)
 
 
-print(type(123_456.5))
-print(type("stringasdf"))
-print(type(True))
+# print(type(123_456.5))
+# print(type("stringasdf"))
+# print(type(True))
 
 # print("----------------------------------")
 # print("Welcome to the tip calculator!")
@@ -94,5 +95,15 @@ class User:
                 arr.append(i)
         return arr
 
+    def palindrome_text(text):
+        origin = re.sub(r'[^a-zA-Z0-9]', '', str(text)).lower()
+        reverse = origin[::-1]
+
+        return origin == reverse
+
 
 print(User.fizz_buzz(32))
+print("**************************************")
+print(User.palindrome_text("A man, a plan, a canal, Panama!"))
+print("**************************************")
+
