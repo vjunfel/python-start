@@ -7,16 +7,20 @@ special = ['!', '@', '#', '$', '%', '^', '&', '*', '-', '_']
 
 
 def random_password_generator():
-    result = ""
-    for _ in range(1, 12):
-        if (len(result) < 12):
+    password = ""
+
+    number_of_characters = int(input("How many characters do you want? "))
+    if (len(password) < number_of_characters):
+        for _ in range(number_of_characters):
             num = str(random.randint(0, 9))
             letter = str(alphabeth[random.randint(0, len(alphabeth) - 1)])
             spec = str(special[random.randint(0, len(special) - 1)])
 
-            result += num + letter + spec
+            combined = num + letter + spec
 
-    return result
+            password += random.choice(combined)
+
+    return password
 
 
-print("FINAL:", random_password_generator())
+print(random_password_generator())
