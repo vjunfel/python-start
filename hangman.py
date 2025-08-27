@@ -1,57 +1,66 @@
 import random
+from hangman_words import word_list, hangman_logo
 
-word_list = [
-    "dog", "cat", "lion", "tiger", "elephant", "zebra", "giraffe", "monkey", "bear", "panda",
-    "kangaroo", "koala", "wolf", "fox", "deer", "camel", "horse", "donkey", "sheep", "goat",
-    "cow", "buffalo", "ox", "pig", "rabbit", "squirrel", "mouse", "rat", "hamster", "hedgehog",
-    "bat", "whale", "dolphin", "shark", "octopus", "crab", "lobster", "jellyfish", "seal", "penguin",
-    "ostrich", "peacock", "eagle", "hawk", "falcon", "parrot", "sparrow", "pigeon", "duck", "goose",
-    "chicken", "turkey", "swan", "owl", "vulture", "crow", "flamingo", "pelican", "stork", "seagull",
-    "ant", "bee", "butterfly", "dragonfly", "mosquito", "fly", "beetle", "grasshopper", "cricket", "ladybug",
-    "snake", "lizard", "crocodile", "alligator", "frog", "toad", "turtle", "chameleon", "iguana", "gecko",
-    "salmon", "trout", "carp", "goldfish", "catfish", "tuna", "mackerel", "sardine", "anchovy", "eel",
-    "hippopotamus", "rhinoceros", "leopard", "cheetah", "jaguar", "cougar", "lynx", "meerkat", "otter", "armadillo"
-]
+choosen_word = random.choice(word_list).lower()
+# Create a hangman game that will guess the random word by guessing its letters.
+word_length = len(choosen_word)
+life = 6
 
-chosen_word = random.choice(word_list).lower()
-# print(chosen_word.upper())
-
-life = 5
-placeholder = ""
-
-game_over = False
 correct_letters = []
+game_over = False
+letter_placeholder = ""
 
-for item in range(len(chosen_word)):
-    placeholder += "_"
 
-print(placeholder)
+# display "_" each letter on a word.
+for letter in range(word_length):
+    letter_placeholder += "_"
 
-while life > 0 and not game_over:
-    print("LIFE: ", life)
-    guess = input("Guess a letter: ").lower()
-    display = ""
+print(hangman_logo)
+print("Life: ", life)
+# print(choosen_word.upper())
+print(letter_placeholder.center(50, "="))
 
-    for letter in chosen_word:
-        if letter == guess:
-            display += letter
-            correct_letters.append(guess)
-        elif letter in correct_letters:
-            display += letter
-        else:
-            display += "_"
 
-    print("DISPLAY: ", display.upper())
+def hangman_game():
+    global life, game_over
 
-    if guess not in chosen_word:
-        life -= 1
+    while life > 0 and not game_over:
+        display = ""
 
-    if display.lower() == chosen_word.lower():
-        game_over = True
+        guess_letter = input("Type a letter: ").lower()
+
+        if guess_letter not in choosen_word:
+            life -= 1
+            print("Wrong letter! Life:", life)
+
+        if guess_letter in correct_letters:
+            print("You already guessed that letter!")
+            continue
+
+        for letter in choosen_word:
+            if letter == guess_letter:
+                display += letter
+                correct_letters.append(letter)
+                print("Correct! life:", life)
+
+            elif letter in correct_letters:
+                display += letter
+
+            else:
+                display += "_"
+
         print("*" * 50)
-        print("Congrats! You Win :-)")
+        print(display.center(50, "="))
 
-    if life == 0:
-        game_over = True
-        print("*" * 50)
-        print("Game Over! You Failed :-(")
+        if display == choosen_word:
+            game_over = True
+            print("*" * 50)
+            print("Congrats, You Win! :-)")
+
+        if life == 0:
+            game_over = True
+            print("*" * 50)
+            print("Game Over, You've lost! :-(")
+
+
+hangman_game()
