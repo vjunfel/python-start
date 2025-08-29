@@ -15,7 +15,7 @@ letter_placeholder = ""
 for letter in range(word_length):
     letter_placeholder += "_"
 
-print(hangman_logo)
+print("Welcome to \n", hangman_logo)
 print("Life: ", life)
 # print(choosen_word.upper())
 print(letter_placeholder.center(50, "="))
@@ -60,6 +60,7 @@ def hangman_game():
         if life == 0:
             game_over = True
             print("*" * 50)
+            print(choosen_word.center(50, "="))
             print("Game Over, You've lost! :-(")
 
 
