@@ -8,6 +8,10 @@ alphabet = list(string.ascii_letters) + list(string.printable)
 
 # print(alphabet)
 
+# CAESAR CIPHER - Is an ancient way to encrypt and decrypt a secret message. 
+# TODO-1 Create a function that will takes "text_input" and "count" as parameters. 
+# TODO-2 Encrypt will shift each letter of the "original text" forward in the alphabet while decrypt will do the opposite.
+
 text_input = input("Type your message here: ")
 count = int(input("Shift count: "))
 
@@ -37,8 +41,8 @@ def decrypt(encrypted_text, shift_count):
 # print(decrypt(text_input, count))
 
 print("-----------------------------------------------------")
-# ENCRYPTION OR DECRYPTION OPTION
 
+# ENCRYPTION OR DECRYPTION OPTION
 def caesar(input_text, shift_count):
     direction = input('Type "e" for encrypt and "d" for decrypt? ')
     output_text = ""
