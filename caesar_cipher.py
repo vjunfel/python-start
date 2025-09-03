@@ -15,17 +15,17 @@ alphabet = list(string.ascii_letters) + list(string.printable)
 
 print(caesar_cipher_logo.logo)
 
-text_input = input("Type your message here: ")
-count = int(input("Shift count: "))
+# text_input = input("Type your message here: ")
+# count = int(input("Shift count: "))
 
 # ENCRYPTION
-def encrypt(original_text, shift_count):
-    output = ""
+# def encrypt(original_text, shift_count):
+#     output = ""
     
-    for letter in original_text:
-        output += alphabet[alphabet.index(letter) + shift_count]
+#     for letter in original_text:
+#         output += alphabet[alphabet.index(letter) + shift_count]
         
-    return output
+#     return output
 
 # print(encrypt(text_input, count).center(50, "*"))
 
@@ -33,30 +33,42 @@ def encrypt(original_text, shift_count):
 # print("-----------------------------------------------------")
 
 # DECRYPTION
-def decrypt(encrypted_text, shift_count):
-    output = ""
+# def decrypt(encrypted_text, shift_count):
+#     output = ""
     
-    for letter in encrypted_text:
-        output += alphabet[alphabet.index(letter) - shift_count]
+#     for letter in encrypted_text:
+#         output += alphabet[alphabet.index(letter) - shift_count]
     
-    return output
+#     return output
 
 # print(decrypt(text_input, count))
 
 # print("-----------------------------------------------------")
 
 # ENCRYPTION OR DECRYPTION OPTION
-def caesar(input_text, shift_count):
-    direction = input('Type "e" for encrypt and "d" for decrypt? ')
+def caesar():
     output_text = ""
+    proceed = True
     
-    for letter in input_text:
-        if direction == "e":
-            output_text += alphabet[alphabet.index(letter) + shift_count]
-        elif direction == "d":
-            output_text += alphabet[alphabet.index(letter) - shift_count]
-            
-    return output_text
-
-
-print(caesar(text_input, count))
+    while proceed:
+        text_input = input("Type your message here: ")
+        shift_count = int(input("Shift count: "))
+        direction = input('Type "E" for encrypt and "D" for decrypt? ').upper()
+        
+        for letter in text_input:
+            if direction == "E":
+                output_text += alphabet[alphabet.index(letter) + shift_count]
+            elif direction == "D":
+                output_text += alphabet[alphabet.index(letter) - shift_count]
+                
+        print(output_text)
+        output_text = ""
+    
+        proceed = input("Do you want to continue? Y or N ==>> ").upper()
+        
+        if proceed == "Y":
+            proceed = True
+        else:
+            proceed = False
+        
+caesar()
